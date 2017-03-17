@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Select An Airport</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+        <ion-input type="text" placeholder="Search" [(ngModel)]="searchText"></ion-input>
+    </ion-item>
+
+    <ion-list>
+        <button ion-item color="primary"
+                *ngFor="let airport of airports | airportShortcodeMatch : searchText"
+                (click)="selectAirport(airport)">
+            <span class="airport-shortcode" [style.color]="'white'">({{ airport.shortcode }})</span>
+            <span class="airport-name">{{ airport.name }}</span>
+        </button>
+    </ion-list>
+
+    <ion-list>
+        <button ion-item *ngFor="let airport of airports | airportName : searchText">
+            <span class="airport-shortcode">({{ airport.shortcode }})</span>
+            <span class="airport-name">{{ airport.name }}</span>
+        </button>
+    </ion-list>
+</ion-content>
