@@ -6,13 +6,15 @@ import {AirportApi} from "../providers/api/airport-api.service";
 import {AirportNamePipe} from "../pipes/airportName.pipe";
 import {AirportShortcodeMatchPipe} from "../pipes/airportShortcodeMatch";
 import {AirportService} from "../providers/services/airport.service";
+import {AirportWaitTimesPage} from "../pages/airport-wait-times/airport-wait-times";
 
 @NgModule({
     declarations: [
         MyApp,
         AirportSelectPage,
         AirportNamePipe,
-        AirportShortcodeMatchPipe
+        AirportShortcodeMatchPipe,
+        AirportWaitTimesPage
     ],
     imports: [
         IonicModule.forRoot(MyApp)
@@ -20,7 +22,8 @@ import {AirportService} from "../providers/services/airport.service";
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        AirportSelectPage
+        AirportSelectPage,
+        AirportWaitTimesPage
     ],
     providers: [
         {provide: ErrorHandler, useClass: IonicErrorHandler},

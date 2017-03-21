@@ -12,7 +12,8 @@
     </ion-item>
 
     <ion-list>
-        <button ion-item color="primary"
+        <button ion-item
+                color="primary"
                 *ngFor="let airport of airports | airportShortcodeMatch : searchText"
                 (click)="selectAirport(airport)">
             <span class="airport-shortcode" [style.color]="'white'">({{ airport.shortcode }})</span>
@@ -21,7 +22,9 @@
     </ion-list>
 
     <ion-list>
-        <button ion-item *ngFor="let airport of airports | airportName : searchText">
+        <button ion-item
+                *ngFor="let airport of airports | airportName : searchText"
+                (click)="selectAirport(airport)">
             <span class="airport-shortcode">({{ airport.shortcode }})</span>
             <span class="airport-name">{{ airport.name }}</span>
         </button>

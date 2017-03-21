@@ -2,12 +2,14 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {AirportApi} from "../api/airport-api.service";
 import {Airport} from "../../interfaces/airport.interface";
+import {CheckpointWaitTime} from "../../interfaces/checkpoint-wait-time";
 
 
 @Injectable()
 export class AirportService {
     airports : Array<Airport> = null;
     selectedAirport : Airport = null;
+    checkpointWaitTimes : Array<CheckpointWaitTime> = null;
 
     constructor(private airportApi: AirportApi) {
     }
@@ -25,10 +27,11 @@ export class AirportService {
         })
     }
 
-    getAirportByShortcode(shortcode) {
+    getAirportByShortcode(shortcode) : Promise<Array<CheckpointWaitTime>> {
         return new Promise((resolve, reject) => {
             this.airportApi.getAirportByShortcode(shortcode).subscribe((data) => {
-                console.log(data);
+                this.checkpointWaitTimes = data;
+                resolve(this.checkpointWaitTimes);
             })
         })
     }

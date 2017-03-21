@@ -15,7 +15,14 @@ router.get('/', (req, res) => {
 router.get('/shortcode/:shortcode', (req, res) => {
     http.get('http://apps.tsa.dhs.gov/MyTSAWebService/GetTSOWaitTimes.ashx?ap=' + req.params.shortcode + '&output=json',
         (resp) => {
-            res.status(200).send(JSON.parse(resp.body));
+            let buffer = '';
+            resp.on('data', (chunk) => {
+                buffer += chunk;
+            });
+
+            resp.on('end', (chunk) => {
+                res.status(200).send(JSON.parse(buffer))
+            });
         });
 });
 
