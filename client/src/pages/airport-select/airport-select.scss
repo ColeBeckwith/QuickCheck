@@ -2,6 +2,17 @@ page-airport-select {
     .airport-shortcode {
         color: gray;
     }
+
+    .nearby-airport-list-item {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .airport-distance {
+        opacity: .8;
+        font-size: 85%;
+        color: map-get($colors, 'primary');
+    }
 }
 
 

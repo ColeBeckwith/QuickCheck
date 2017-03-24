@@ -6,9 +6,10 @@ export interface Airport {
     city: string;
     state: string;
     utc: string;
-    latitude: string;
-    longitude: string;
-    dst: string;
-    precheck: string;
-    checkpoints: Array<AirportCheckpoint>
+    latitude: number;
+    longitude: number;
+    dst: boolean;
+    precheck: boolean;
+    checkpoints: Array<AirportCheckpoint>;
+    milesFromUser: number;
 }

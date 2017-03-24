@@ -17,6 +17,6 @@ export class AirportApi {
 
     getAirportByShortcode(shortcode: string) {
         return this.http.get('/api/airports/shortcode/' + shortcode)
-            .map(data => data.json().WaitTimes);
+            .map(data => data.json());
     }
 }

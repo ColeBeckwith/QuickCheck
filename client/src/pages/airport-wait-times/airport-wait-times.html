@@ -14,10 +14,12 @@
 
 
 <ion-content padding>
-        <div class="checkpoint-wait-time"
-             ion-item
-             *ngFor="let checkpoint of airportService.selectedAirport.checkpoints">
-            <span>{{ checkpoint.longname }}</span>
-            <span>Wait Time: {{ checkpoint.waitTime || 'No Update'}}</span>
-        </div>
+    <ion-card *ngFor="let checkpoint of airportService.selectedAirport.checkpoints">
+        <ion-card-header>
+            {{ checkpoint.longname }}
+        </ion-card-header>
+        <ion-card-content>
+            <span>Wait Time: {{ checkpoint.waitTime || 'No Update' }}</span>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

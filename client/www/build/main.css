@@ -24502,6 +24502,21 @@ page-airport-select .airport-shortcode {
   color: gray;
 }
 
+page-airport-select .nearby-airport-list-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+page-airport-select .airport-distance {
+  opacity: .8;
+  font-size: 85%;
+  color: #387ef5;
+}
+
 page-airport-wait-times .checkpoint-wait-time {
   display: -webkit-flex;
   display: -ms-flexbox;

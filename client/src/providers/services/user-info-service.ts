@@ -17,10 +17,15 @@ export class UserInfoService {
     getUserCoordinates() {
         if (!this.coordinatesCache) {
             this.coordinatesCache = new Promise((resolve, reject) => {
-               // navigator.geolocation
+               navigator.geolocation.getCurrentPosition((pos : any) => {
+                   this.coordinates = {
+                       latitude : pos.coords.latitude,
+                       longitude : pos.coords.longitude
+                   };
+                   resolve(this.coordinates);
+               })
             })
         }
-
         return this.coordinatesCache;
     }
 

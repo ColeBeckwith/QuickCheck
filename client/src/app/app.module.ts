@@ -7,6 +7,7 @@ import {AirportNamePipe} from "../pipes/airportName.pipe";
 import {AirportShortcodeMatchPipe} from "../pipes/airportShortcodeMatch";
 import {AirportService} from "../providers/services/airport.service";
 import {AirportWaitTimesPage} from "../pages/airport-wait-times/airport-wait-times";
+import {UserInfoService} from "../providers/services/user-info-service";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {AirportWaitTimesPage} from "../pages/airport-wait-times/airport-wait-tim
     providers: [
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AirportApi,
-        AirportService
+        AirportService,
+        UserInfoService
     ]
 })
 export class AppModule {

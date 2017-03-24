@@ -1,8 +1,8 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Select An Airport</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Select An Airport</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
@@ -12,21 +12,37 @@
     </ion-item>
 
     <ion-list>
-        <button ion-item
-                color="primary"
-                *ngFor="let airport of airports | airportShortcodeMatch : searchText"
-                (click)="selectAirport(airport)">
+        <ion-item
+            color="primary"
+            *ngFor="let airport of allAirports | airportShortcodeMatch : searchText"
+            (click)="selectAirport(airport)">
             <span class="airport-shortcode" [style.color]="'white'">({{ airport.shortcode }})</span>
             <span class="airport-name">{{ airport.name }}</span>
-        </button>
+        </ion-item>
     </ion-list>
 
+    <div *ngIf="nearbyAirports.length > 0">
+        <ion-list>
+            <ion-list-header>Nearby Airports</ion-list-header>
+            <ion-item *ngFor="let airport of nearbyAirports"
+                      (click)="selectAirport(airport)">
+                <div class="nearby-airport-list-item">
+                    <div>
+                        <span class="airport-shortcode">({{ airport.shortcode }})</span>
+                        <span class="airport-name">{{ airport.name }}</span>
+                    </div>
+                    <span class="airport-distance">{{ airport.milesFromUser }}mi</span>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+
     <ion-list>
-        <button ion-item
-                *ngFor="let airport of airports | airportName : searchText"
-                (click)="selectAirport(airport)">
+        <ion-list-header>All Airports</ion-list-header>
+        <ion-item *ngFor="let airport of allAirports | airportName : searchText"
+                  (click)="selectAirport(airport)">
             <span class="airport-shortcode">({{ airport.shortcode }})</span>
             <span class="airport-name">{{ airport.name }}</span>
-        </button>
+        </ion-item>
     </ion-list>
 </ion-content>

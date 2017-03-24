@@ -4,6 +4,7 @@ import {Platform, MenuController, Nav} from 'ionic-angular';
 
 import {StatusBar, Splashscreen} from 'ionic-native';
 import {AirportSelectPage} from "../pages/airport-select/airport-select";
+import {UserInfoService} from "../providers/services/user-info-service";
 
 
 @Component({
@@ -33,11 +34,6 @@ export class MyApp implements OnInit {
         this.platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
-            navigator.geolocation.getCurrentPosition((pos) => {
-                console.log(pos);
-            });
-
-            // Geolocation.getCurrentPosition()
             StatusBar.styleDefault();
             Splashscreen.hide();
         });
