@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {AirportService} from "../../providers/services/airport.service";
+import {OnInit} from "../../../node_modules/@angular/core/src/metadata/lifecycle_hooks";
 
 /*
  Generated class for the AirportWaitTimes page.
@@ -12,15 +13,18 @@ import {AirportService} from "../../providers/services/airport.service";
     selector: 'page-airport-wait-times',
     templateUrl: 'airport-wait-times.html'
 })
-export class AirportWaitTimesPage {
-
+export class AirportWaitTimesPage implements OnInit {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public airportService: AirportService) {
     }
 
     ionViewDidLoad() {
-        console.log(this.airportService.checkpointWaitTimes);
+
+    }
+
+    ngOnInit() {
+        this.airportService.getMostRecentCheckpointTimes();
     }
 
 }

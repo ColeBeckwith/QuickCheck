@@ -6,18 +6,18 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Checkpoint Wait Times</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{ airportService.selectedAirport.name }}</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <ion-list>
-        <button ion-item *ngFor="let waitTime of airportService.checkpointWaitTimes">
-            <span>Checkpoint: {{ waitTime.CheckpointIndex }}</span>
-            <span>Wait Time: {{ waitTime.WaitTime }}</span>
-        </button>
-    </ion-list>
+        <div class="checkpoint-wait-time"
+             ion-item
+             *ngFor="let checkpoint of airportService.selectedAirport.checkpoints">
+            <span>{{ checkpoint.longname }}</span>
+            <span>Wait Time: {{ checkpoint.waitTime || 'No Update'}}</span>
+        </div>
 </ion-content>

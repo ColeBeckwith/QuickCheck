@@ -24501,3 +24501,13 @@ ion-navbar.toolbar {
 page-airport-select .airport-shortcode {
   color: gray;
 }
+
+page-airport-wait-times .checkpoint-wait-time {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 70%;
+}

@@ -12,7 +12,7 @@ export class AirportApi {
 
     getAirports(): Observable<Array<Airport>> {
         return this.http.get('/api/airports')
-            .map(data => data.json().airports.airport);
+            .map(data => data.json().airports);
     }
 
     getAirportByShortcode(shortcode: string) {

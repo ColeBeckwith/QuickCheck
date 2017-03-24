@@ -4,6 +4,16 @@ import {AirportApi} from "../api/airport-api.service";
 import {Airport} from "../../interfaces/airport.interface";
 import {CheckpointWaitTime} from "../../interfaces/checkpoint-wait-time";
 
+const waitTimeMapping = {
+    '1' : 'No Wait',
+    '2' : '1-10 Min',
+    '3' : '11-20 Min',
+    '4' : '21-30 Min',
+    '5' : '31-45 Min',
+    '6' : '46-60 Min',
+    '7' : '61-90 Min',
+    '8' : '91+ Min'
+};
 
 @Injectable()
 export class AirportService {
@@ -38,6 +48,18 @@ export class AirportService {
 
     selectAirport(airport : Airport) {
         this.selectedAirport = airport;
+    }
+
+    getMostRecentCheckpointTimes() {
+        this.selectedAirport.checkpoints.forEach((checkpoint) => {
+            let waitTimeFound = false;
+            this.checkpointWaitTimes.forEach((waitTime) => {
+                if (!waitTimeFound && waitTime.CheckpointIndex === checkpoint.id) {
+                    checkpoint.waitTime = waitTimeMapping[waitTime.WaitTime];
+                    waitTimeFound = true;
+                }
+            })
+        });
     }
 
 }

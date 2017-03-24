@@ -25,8 +25,7 @@ export class MyApp implements OnInit {
 
         // set our app's pages
         this.pages = [
-            // {title: 'Hello Ionic', component: HelloIonicPage},
-            // {title: 'My First List', component: ListPage}
+
         ];
     }
 
@@ -34,6 +33,11 @@ export class MyApp implements OnInit {
         this.platform.ready().then(() => {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
+            navigator.geolocation.getCurrentPosition((pos) => {
+                console.log(pos);
+            });
+
+            // Geolocation.getCurrentPosition()
             StatusBar.styleDefault();
             Splashscreen.hide();
         });
