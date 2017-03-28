@@ -7,6 +7,7 @@ const request = require('request');
 const xml2json = require('xml2json');
 const fs = require('fs');
 const airports = require('../assets/airports.json');
+const tsaApiCalls = require('../utilities/tsa-api-calls');
 
 
 router.get('/', (req, res) => {
@@ -14,21 +15,9 @@ router.get('/', (req, res) => {
 });
 
 router.get('/shortcode/:shortcode', (req, res) => {
-    http.get('http://apps.tsa.dhs.gov/MyTSAWebService/GetTSOWaitTimes.ashx?ap=' + req.params.shortcode + '&output=json',
-        (resp) => {
-            let buffer = '';
-            resp.on('data', (chunk) => {
-                buffer += chunk;
-            });
-
-            resp.on('end', (chunk) => {
-                let waitTimes = JSON.parse(buffer).WaitTimes;
-                waitTimes.forEach((waitTime) => {
-                    waitTime.CheckpointIndex = parseInt(waitTime.CheckpointIndex);
-                });
-                res.status(200).send(waitTimes)
-            });
-        });
+    tsaApiCalls.getAirportWaitTimesByShortcode(req.params.shortcode).then((resp) => {
+        res.status(200).send(resp);
+    });
 });
 
 module.exports = router;

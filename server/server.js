@@ -25,6 +25,8 @@ app.use(function(req, res, next) {
    next();
 });
 
+require('./background-tasks/checkpoint-data-gatherer');
+
 const airportsApi = require('./routes/airports');
 app.use('/api/airports', airportsApi);
 
